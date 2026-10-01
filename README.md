@@ -10,3 +10,4 @@ This repository contains my practical work for the Scripting for Cybersecurity m
 - Lab 03 - Text Processing and Log Analysis
 - Lab 04 - Finding Files and Working with Data
 - Revision 02 - Lab 03 + Lab 04 Revision
+- Lab 05 - Shebangs, Variables and Input
