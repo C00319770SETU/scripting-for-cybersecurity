@@ -1,0 +1,54 @@
+Lab 6 Investigation
+
+1. Top attackers in collected authentication log
+
+     15 203.0.113.10
+     14 198.51.100.24
+      8 198.51.100.77
+
+2. Targeted usernames
+
+     17 admin
+     10 root
+      7 guest
+      4 test
+      4 backup
+      3 oracle
+
+3. Why does "invalid" appear?
+
+The word "invalid" appears because SSH can log failed attempts for invalid users in a format such as:
+
+Failed password for invalid user USERNAME from ...
+
+The command used in this lab takes the word immediately after "for", so it records "invalid" instead of the actual username.
+
+4. Web log test
+
+Log file: case/logs/access.log
+Failed password events: 0
+Top attacker:
+Top 3 attackers:
+Top 3 targeted usernames:
+
+The attacker_report.sh script is designed for SSH authentication logs, so its failed-password and username statistics are not meaningful for the web access log.
+
+5. Firewall blocks
+
+Firewall BLOCK events:
+
+BLOCK 203.0.113.10 -> 10.0.0.10:22
+BLOCK 198.51.100.24 -> 10.0.0.10:22
+BLOCK 203.0.113.200 -> 10.0.0.30:3389
+
+Failed-login sources:
+
+     15 203.0.113.10
+     14 198.51.100.24
+      8 198.51.100.77
+      5 203.0.113.200
+      3 203.0.113.15
+
+Conclusion
+
+The investigation demonstrates the use of command substitution, script arguments, exit codes, grep, awk, sort, and log analysis to investigate authentication, web, and firewall activity.
