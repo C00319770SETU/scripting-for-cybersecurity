@@ -1,0 +1,31 @@
+LAB 5 TRIAGE REPORT
+===================
+Analyst: William Doyle
+Case Reference: CASE-2026-014
+Date: Thu Oct  1 14:29:43 UTC 2026
+
+Total Files: 22
+Total Directories: 9
+Python Files: 2
+Shell Scripts: 1
+Log Files: 4
+Configuration Files: 3
+Empty Files: 1
+Archives: 1
+
+Files containing admin:
+case/logs/auth.log
+case/logs/access.log
+case/backups/users.old
+case/evidence/notes.txt
+
+Detected file types:
+case/evidence/archive.zip:    Zip archive data, at least v2.0 to extract, compression method=deflate
+case/evidence/empty.bin:      empty
+case/evidence/image.png:      PNG image data, 1 x 1, 8-bit/color RGBA, non-interlaced
+case/evidence/notes.txt:      ASCII text
+case/evidence/passwords.txt:  ASCII text
+case/evidence/readme.md:      ASCII text
+case/evidence/suspicious.dat: ELF, unknown class 154
+
+Scripts (Python + shell): 3
