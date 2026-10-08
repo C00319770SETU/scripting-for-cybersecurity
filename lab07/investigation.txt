@@ -1,0 +1,77 @@
+===== alice =====
+alice: CURRENT account
+Role: active
+Status: Computing
+Failed logins: 0
+Accepted logins: 6
+Risk: NONE (no failed attempts)
+WARNING: current account has accepted logins and plaintext credentials are present
+Exit code: 0
+
+===== bob =====
+bob: CURRENT account
+Role: active
+Status: Computing
+Failed logins: 0
+Accepted logins: 5
+Risk: NONE (no failed attempts)
+WARNING: current account has accepted logins and plaintext credentials are present
+Exit code: 0
+
+===== eve =====
+eve: CURRENT account
+Role: active
+Status: Security
+Failed logins: 0
+Accepted logins: 3
+Risk: NONE (no failed attempts)
+Exit code: 0
+
+===== david =====
+david: CURRENT account
+Role: disabled
+Status: Computing
+Failed logins: 0
+Accepted logins: 0
+Risk: NONE (no failed attempts)
+Exit code: 0
+
+===== admin =====
+admin: LEGACY account (only in the old backup list)
+Failed logins: 17
+Accepted logins: 0
+Risk: HIGH (17 failed attempts)
+WARNING: LEGACY account was targeted by failed logins
+Exit code: 2
+
+===== root =====
+root: LEGACY account (only in the old backup list)
+Failed logins: 10
+Accepted logins: 0
+Risk: MEDIUM (10 failed attempts)
+WARNING: LEGACY account was targeted by failed logins
+Exit code: 2
+
+===== backup =====
+backup: LEGACY account (only in the old backup list)
+Failed logins: 4
+Accepted logins: 0
+Risk: LOW (4 failed attempts)
+WARNING: LEGACY account was targeted by failed logins
+Exit code: 2
+
+===== oracle =====
+oracle: UNKNOWN account (in neither list)
+Failed logins: 3
+Accepted logins: 0
+Risk: LOW (3 failed attempts)
+WARNING: UNKNOWN account was targeted by failed logins
+Exit code: 3
+
+===== nobody =====
+nobody: UNKNOWN account (in neither list)
+Failed logins: 0
+Accepted logins: 0
+Risk: NONE (no failed attempts)
+Exit code: 3
+
