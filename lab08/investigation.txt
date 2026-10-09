@@ -1,0 +1,118 @@
+Lab 8 — Investigation Results
+
+Part 4: IP and Log Search Matrix
+See the nine check_ip.sh commands and their outputs below.
+
+Part 7: Investigation Challenge
+See the six investigate.sh commands and their outputs below.
+
+]633;E;run_and_record ./investigate.sh case/logs/auth.log 198.51.100.77;99dfbd40-94f4-4e3b-ba6e-a09dbd7606e0]633;C
+$ ./investigate.sh case/logs/auth.log 198.51.100.77
+IP 198.51.100.77: Found 8 time(s) in case/logs/auth.log
+  Risk Assessment: MEDIUM RISK (8 failed login attempts)
+  Firewall Log Matches: None
+  IOC List: Not listed
+Exit Code: 0
+
+
+$ ./investigate.sh case/logs/auth.log 203.0.113.200
+IP 203.0.113.200: Found 5 time(s) in case/logs/auth.log
+  Risk Assessment: MEDIUM RISK (5 failed login attempts)
+  Firewall Log Matches:
+    BLOCK 203.0.113.200 -> 10.0.0.30:3389
+  IOC List: MATCHED in intel/iocs.txt
+Exit Code: 0
+
+
+$ ./investigate.sh case/logs/access.log 203.0.113.77
+IP 203.0.113.77: Found 12 time(s) in case/logs/access.log
+  Risk Assessment: LOW RISK (0 failed login attempts)
+  Firewall Log Matches: None
+  IOC List: Not listed
+Exit Code: 0
+
+
+$ ./investigate.sh case/logs/auth.log admin
+Username admin Activity in case/logs/auth.log:
+  Failed Logins: 17
+  Accepted Logins: 0
+  Account Status: UNKNOWN
+Exit Code: 0
+
+
+$ ./investigate.sh case/logs/auth.log alice
+Username alice Activity in case/logs/auth.log:
+  Failed Logins: 0
+  Accepted Logins: 6
+  Account Status: CURRENT
+Exit Code: 0
+
+
+$ ./investigate.sh case/logs/missing.log admin
+Error: Log file 'case/logs/missing.log' does not exist.
+Exit Code: 2
+
+IP               auth.log   access.log   firewall.log
+203.0.113.10     FOUND (15) FOUND (21)  FOUND (1)
+198.51.100.24    FOUND (14) FOUND (19)  FOUND (1)
+203.0.113.200    FOUND (5)  NOT FOUND   FOUND (1)
+]633;E;echo;99dfbd40-94f4-4e3b-ba6e-a09dbd7606e0]633;C
+Part 4: IP and Log Search Matrix — Full Command Outputs
+
+$ ./check_ip.sh case/logs/auth.log 203.0.113.10
+FOUND: 203.0.113.10 appears 15 time(s) in case/logs/auth.log
+Exit Code: 0
+
+$ ./check_ip.sh case/logs/access.log 203.0.113.10
+FOUND: 203.0.113.10 appears 21 time(s) in case/logs/access.log
+Exit Code: 0
+
+$ ./check_ip.sh case/logs/firewall.log 203.0.113.10
+FOUND: 203.0.113.10 appears 1 time(s) in case/logs/firewall.log
+Exit Code: 0
+
+$ ./check_ip.sh case/logs/auth.log 198.51.100.24
+FOUND: 198.51.100.24 appears 14 time(s) in case/logs/auth.log
+Exit Code: 0
+
+$ ./check_ip.sh case/logs/access.log 198.51.100.24
+FOUND: 198.51.100.24 appears 19 time(s) in case/logs/access.log
+Exit Code: 0
+
+$ ./check_ip.sh case/logs/firewall.log 198.51.100.24
+FOUND: 198.51.100.24 appears 1 time(s) in case/logs/firewall.log
+Exit Code: 0
+
+$ ./check_ip.sh case/logs/auth.log 203.0.113.200
+FOUND: 203.0.113.200 appears 5 time(s) in case/logs/auth.log
+Exit Code: 0
+
+$ ./check_ip.sh case/logs/access.log 203.0.113.200
+NOT FOUND: 203.0.113.200 does not appear in case/logs/access.log
+Exit Code: 3
+
+$ ./check_ip.sh case/logs/firewall.log 203.0.113.200
+FOUND: 203.0.113.200 appears 1 time(s) in case/logs/firewall.log
+Exit Code: 0
+
+
+Login Source Findings
+
+alice: 4 different source addresses
+192.168.1.20
+192.168.1.35
+192.168.1.40
+192.168.1.55
+
+bob: 3 different source addresses
+192.168.1.20
+192.168.1.35
+192.168.1.40
+
+charlie: 1 different source address
+192.168.1.55
+
+eve: 3 different source addresses
+192.168.1.20
+192.168.1.35
+192.168.1.40
